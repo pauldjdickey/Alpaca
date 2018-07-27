@@ -95,7 +95,7 @@
             </objects>
             <point key="canvasLocation" x="1804" y="475.41229385307349"/>
         </scene>
-        <!--List Items Table View Controller-->
+        <!--Title-->
         <scene sceneID="bzq-QT-cAa">
             <objects>
                 <tableViewController id="7tO-iw-9W8" customClass="ListItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,7 +113,7 @@
                             </scopeButtonTitles>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wcG-7b-IBL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="wcG-7b-IBL" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="84" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wcG-7b-IBL" id="8eq-x3-TN7">
@@ -127,6 +127,13 @@
                             <outlet property="delegate" destination="7tO-iw-9W8" id="Kqd-cO-N7N"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="syO-Cv-kGk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Iiy-hs-TfK">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="7tO-iw-9W8" id="7xE-bi-JhV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="SKF-Mm-9cY" id="6FG-jr-KZD"/>
                     </connections>
