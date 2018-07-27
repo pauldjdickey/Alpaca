@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1226336BF4ABB56D66EA6E4A /* Pods_Alpaca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110924E4F6AC50B1E9122C18 /* Pods_Alpaca.framework */; };
+		5D0169BC210BC92300620EFE /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0169BB210BC92300620EFE /* List.swift */; };
+		5D0169BE210BC92F00620EFE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0169BD210BC92F00620EFE /* Item.swift */; };
 		5D24BEE9210BC5F50061CDCB /* ListItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24BEE8210BC5F50061CDCB /* ListItemsTableViewController.swift */; };
 		5D526E9021055B2F00A28131 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D526E8F21055B2F00A28131 /* AppDelegate.swift */; };
 		5D526E9221055B2F00A28131 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D526E9121055B2F00A28131 /* SwipeTableViewController.swift */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		110924E4F6AC50B1E9122C18 /* Pods_Alpaca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alpaca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D0169BB210BC92300620EFE /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		5D0169BD210BC92F00620EFE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5D24BEE8210BC5F50061CDCB /* ListItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemsTableViewController.swift; sourceTree = "<group>"; };
 		5D526E8C21055B2F00A28131 /* Alpaca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alpaca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D526E8F21055B2F00A28131 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		5D24BEE4210BC1590061CDCB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5D0169BB210BC92300620EFE /* List.swift */,
+				5D0169BD210BC92F00620EFE /* Item.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -58,7 +64,6 @@
 			children = (
 				5D24BEE8210BC5F50061CDCB /* ListItemsTableViewController.swift */,
 				5DBC24E92106DC11006AAE85 /* ListTableViewController.swift */,
-				5D526E9121055B2F00A28131 /* SwipeTableViewController.swift */,
 			);
 			path = "List Controllers";
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				5D526E8F21055B2F00A28131 /* AppDelegate.swift */,
+				5D526E9121055B2F00A28131 /* SwipeTableViewController.swift */,
 				5D24BEE7210BC1710061CDCB /* Supporting Files */,
 				5D24BEE6210BC15E0061CDCB /* Views */,
 				5D24BEEA210BC7280061CDCB /* Event Controllers */,
@@ -257,7 +263,9 @@
 				5DBC24E82106DC06006AAE85 /* EventTableViewController.swift in Sources */,
 				5D526E9021055B2F00A28131 /* AppDelegate.swift in Sources */,
 				5DBC24EA2106DC11006AAE85 /* ListTableViewController.swift in Sources */,
+				5D0169BE210BC92F00620EFE /* Item.swift in Sources */,
 				5D24BEE9210BC5F50061CDCB /* ListItemsTableViewController.swift in Sources */,
+				5D0169BC210BC92300620EFE /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ListTableViewController: SwipeTableViewController {
+    
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
