@@ -7,5 +7,7 @@ target 'Alpaca' do
 
   # Pods for Alpaca
 pod 'RealmSwift'
+pod 'SwipeCellKit'
+
 
 end
