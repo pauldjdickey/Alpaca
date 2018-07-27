@@ -9,10 +9,25 @@
 import UIKit
 import RealmSwift
 
-class ListItemsTableViewController: UITableViewController {
+class ListItemsTableViewController: SwipeTableViewController, UISearchBarDelegate {
+    
+    var listItems: Results<Item>?
+    let realm = try! Realm()
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
+    var selectedList : List? {
+        didSet{
+           // loadItems()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        title = selectedList?.name
     }
     
 }

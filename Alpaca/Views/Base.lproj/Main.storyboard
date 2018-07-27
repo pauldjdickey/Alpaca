@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="o3o-ri-kgx">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="o3o-ri-kgx" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o3o-ri-kgx" id="T0d-d2-deW">
@@ -51,7 +51,13 @@
                             <outlet property="delegate" destination="u85-3x-h6X" id="kUD-Gd-b7X"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Lists" id="DL9-dG-Z7v"/>
+                    <navigationItem key="navigationItem" title="Lists" id="DL9-dG-Z7v">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4tc-t8-2LB">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="u85-3x-h6X" id="WRW-HL-TRn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="7tO-iw-9W8" kind="show" identifier="goToItems" id="AUS-Rm-iUp"/>
                     </connections>
@@ -97,9 +103,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="SKF-Mm-9cY">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wcG-7b-IBL">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wcG-7b-IBL" id="8eq-x3-TN7">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -112,6 +127,9 @@
                             <outlet property="delegate" destination="7tO-iw-9W8" id="Kqd-cO-N7N"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="SKF-Mm-9cY" id="6FG-jr-KZD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Rt-tI-nmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
