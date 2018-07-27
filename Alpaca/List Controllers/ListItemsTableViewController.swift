@@ -16,7 +16,6 @@ class ListItemsTableViewController: SwipeTableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
     var selectedList : List? {
         didSet{
             loadItems()
@@ -108,22 +107,31 @@ extension ListItemsTableViewController: UISearchBarDelegate {
     //MARK: - Search bar methods
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search Button Clicked")
         listItems = listItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
         tableView.reloadData()
-        
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setValue("Done", forKey:"_cancelButtonText")
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count == 0 {
-            loadItems()
-            
-            DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
-            }
-            
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        loadItems()
+        DispatchQueue.main.async {
+            searchBar.resignFirstResponder()
         }
     }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchBar.text?.count == 0 {
+//            loadItems()
+//            
+//            DispatchQueue.main.async {
+//                searchBar.resignFirstResponder()
+//            }
+//            
+//        }
+//    }
 }
 

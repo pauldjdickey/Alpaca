@@ -95,7 +95,7 @@
             </objects>
             <point key="canvasLocation" x="1804" y="475.41229385307349"/>
         </scene>
-        <!--Title-->
+        <!--Items-->
         <scene sceneID="bzq-QT-cAa">
             <objects>
                 <tableViewController id="7tO-iw-9W8" customClass="ListItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,14 +103,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="SKF-Mm-9cY">
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="SKF-Mm-9cY">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                             <scopeButtonTitles>
                                 <string>Title</string>
                                 <string>Title</string>
                             </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="7tO-iw-9W8" id="anL-a0-vAk"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="wcG-7b-IBL" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
@@ -127,7 +130,7 @@
                             <outlet property="delegate" destination="7tO-iw-9W8" id="Kqd-cO-N7N"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="syO-Cv-kGk">
+                    <navigationItem key="navigationItem" title="Items" id="syO-Cv-kGk">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Iiy-hs-TfK">
                             <connections>
                                 <action selector="addButtonPressed:" destination="7tO-iw-9W8" id="7xE-bi-JhV"/>
@@ -135,7 +138,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="SKF-Mm-9cY" id="6FG-jr-KZD"/>
+                        <outlet property="searchBar" destination="SKF-Mm-9cY" id="lWY-f6-uSz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Rt-tI-nmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
