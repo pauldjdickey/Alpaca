@@ -19,6 +19,10 @@ class EventTableViewController: SwipeTableViewController {
         super.viewDidLoad()
         loadLists()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadLists()
+    }
 
     //MARK: - TableView Datasource Methods (Code that tells each cell what to load)
     
@@ -31,17 +35,47 @@ class EventTableViewController: SwipeTableViewController {
         
         if let item = items?[indexPath.row] {
             cell.textLabel?.text = item.title
+            cell.accessoryType = item.done ? .checkmark : .none
         }
         return cell
     }
     
-    //MARK: - TableView Delegate Methods (Code that says what happens when we select a cell)
+    //MARK: - TableView Delegate Methods (What happens when a cell is selected)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let item = items?[indexPath.row] {
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                print("Error saving the done status \(error)")
+            }
+        }
+        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     //MARK: - Data Manipulation Methods
     
     func loadLists () {
         items = realm.objects(Item.self)
         tableView.reloadData()
+    }
+    
+    //MARK: - Delete Data From Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let itemForDeletion = self.items?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+                }
+            } catch {
+                print("Error deleting item, \(error)")
+            }
+        }
     }
     
 }

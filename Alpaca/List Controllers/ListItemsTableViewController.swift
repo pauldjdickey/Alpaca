@@ -25,6 +25,9 @@ class ListItemsTableViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        loadItems()
+    }
     override func viewWillAppear(_ animated: Bool) {
         title = selectedList?.name
     }

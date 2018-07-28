@@ -19,6 +19,9 @@ class ListTableViewController: SwipeTableViewController {
         loadLists()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
+    override func viewDidAppear(_ animated: Bool) {
+        loadLists()
+    }
     
     //MARK: - TableView Datasource Methods (Code that tells each cell what to load)
     
