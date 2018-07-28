@@ -89,7 +89,13 @@
                             <outlet property="delegate" destination="f2r-WR-K3P" id="kJB-nz-AAF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Events" id="A08-AA-nRS"/>
+                    <navigationItem key="navigationItem" title="Events" id="A08-AA-nRS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Op8-Pp-0fU">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="f2r-WR-K3P" id="Nes-pL-DPh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkI-Vv-rAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
