@@ -40,7 +40,7 @@ class EventTableViewController: SwipeTableViewController {
     }
     
     //MARK: - TableView Delegate Methods (Code that says what happens when we select a cell)
-    
+    // Will segue to a list of all tasks to append
     
     //MARK: - Data Manipulation Methods (Save and Load)
     

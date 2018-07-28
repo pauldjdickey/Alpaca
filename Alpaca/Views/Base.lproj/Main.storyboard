@@ -96,10 +96,42 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ElZ-xE-Fvy" kind="show" identifier="showAllItems" id="2lL-VT-Wku"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkI-Vv-rAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804" y="475.41229385307349"/>
+        </scene>
+        <!--All Items-->
+        <scene sceneID="VT5-VU-Uwe">
+            <objects>
+                <tableViewController id="ElZ-xE-Fvy" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XDh-nj-QKl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ENh-G1-0lE" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ENh-G1-0lE" id="t1L-Fj-YDR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ElZ-xE-Fvy" id="xNk-Sm-ub8"/>
+                            <outlet property="delegate" destination="ElZ-xE-Fvy" id="yHU-aG-8zz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="All Items" id="GIC-hm-Xzl"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9y8-wz-ieI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2593" y="475"/>
         </scene>
         <!--Items-->
         <scene sceneID="bzq-QT-cAa">
