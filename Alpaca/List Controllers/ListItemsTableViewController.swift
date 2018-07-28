@@ -101,6 +101,21 @@ class ListItemsTableViewController: SwipeTableViewController {
         tableView.reloadData()
     }
     
+    //MARK: - Delete Data From Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let itemForDeletion = self.listItems?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+                }
+            } catch {
+                print("Error deleting list, \(error)")
+            }
+        }
+    }
+    
 }
 
 extension ListItemsTableViewController: UISearchBarDelegate {
@@ -112,7 +127,6 @@ extension ListItemsTableViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setValue("Done", forKey:"_cancelButtonText")
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
@@ -123,15 +137,5 @@ extension ListItemsTableViewController: UISearchBarDelegate {
             searchBar.resignFirstResponder()
         }
     }
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchBar.text?.count == 0 {
-//            loadItems()
-//            
-//            DispatchQueue.main.async {
-//                searchBar.resignFirstResponder()
-//            }
-//            
-//        }
-//    }
 }
 
