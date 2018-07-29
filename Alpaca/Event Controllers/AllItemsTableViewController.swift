@@ -1,53 +1,50 @@
 //
-//  EventItemsTableViewController.swift
+//  AllItemsTableViewController.swift
 //  Alpaca
 //
-//  Created by Paul Dickey2 on 7/28/18.
+//  Created by Paul Dickey2 on 7/29/18.
 //  Copyright © 2018 Paul Dickey. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
 
-class EventItemsTableViewController: SwipeTableViewController {
-    
-    var eventItems: Results<Item>?
+class AllItemsTableViewController: SwipeTableViewController {
+//  All of this code brings up every item from every list
+
     let realm = try! Realm()
-    
-    var selectedEvent : Event? {
-        didSet{
-            // loadItems()
-        }
-    }
-    
+    var items: Results<Item>?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadLists()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        title = selectedEvent?.name
+
+    override func viewDidAppear(_ animated: Bool) {
+        loadLists()
     }
-    
-    //MARK: - Tableview Datasource Methods (What to load into cells)
-    
+
+    //MARK: - TableView Datasource Methods (Code that tells each cell what to load)
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventItems?.count ?? 1
+        return items?.count ?? 1
     }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        
-        if let item = eventItems?[indexPath.row] {
+
+        if let item = items?[indexPath.row] {
             cell.textLabel?.text = item.title
             cell.accessoryType = item.done ? .checkmark : .none
-        } else {
-            cell.textLabel?.text = "No items added"
         }
         return cell
     }
-    
+
     //MARK: - TableView Delegate Methods (What happens when a cell is selected)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if let item = eventItems?[indexPath.row] {
+
+        if let item = items?[indexPath.row] {
             do {
                 try realm.write {
                     item.done = !item.done
@@ -59,5 +56,27 @@ class EventItemsTableViewController: SwipeTableViewController {
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
+    //MARK: - Data Manipulation Methods
+
+    func loadLists () {
+        items = realm.objects(Item.self)
+        tableView.reloadData()
+    }
+
+    //MARK: - Delete Data From Swipe
+
+    override func updateModel(at indexPath: IndexPath) {
+
+        if let itemForDeletion = self.items?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+                }
+            } catch {
+                print("Error deleting item, \(error)")
+            }
+        }
+    }
+
 }

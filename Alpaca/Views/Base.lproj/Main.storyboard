@@ -127,22 +127,28 @@
                             <outlet property="delegate" destination="ElZ-xE-Fvy" id="yHU-aG-8zz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Event Items" id="GIC-hm-Xzl"/>
+                    <navigationItem key="navigationItem" title="Event Items" id="GIC-hm-Xzl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Ga-L1-B5U">
+                            <connections>
+                                <segue destination="UCI-n8-DW3" kind="show" identifier="goToAllItems" id="gwo-QE-EZ3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9y8-wz-ieI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2593" y="475"/>
         </scene>
-        <!--Table View Controller-->
+        <!--All Items-->
         <scene sceneID="D7y-i2-Xvl">
             <objects>
-                <tableViewController id="UCI-n8-DW3" sceneMemberID="viewController">
+                <tableViewController id="UCI-n8-DW3" customClass="AllItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dAY-5M-uz0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TI9-T9-Vve">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="TI9-T9-Vve" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TI9-T9-Vve" id="haW-oV-wpK">
@@ -156,6 +162,7 @@
                             <outlet property="delegate" destination="UCI-n8-DW3" id="ebQ-GN-SlO"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="All Items" id="Icn-C3-MKn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SM-du-EGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
