@@ -107,7 +107,7 @@
         <!--Event Items-->
         <scene sceneID="VT5-VU-Uwe">
             <objects>
-                <tableViewController id="ElZ-xE-Fvy" sceneMemberID="viewController">
+                <tableViewController id="ElZ-xE-Fvy" customClass="EventItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XDh-nj-QKl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

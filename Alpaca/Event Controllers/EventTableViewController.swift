@@ -40,7 +40,16 @@ class EventTableViewController: SwipeTableViewController {
     }
     
     //MARK: - TableView Delegate Methods (Code that says what happens when we select a cell)
-    // Will segue to a list of all tasks to append
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToEventItems", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! EventItemsTableViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedEvent = events?[indexPath.row]
+        }
+    }
     
     //MARK: - Data Manipulation Methods (Save and Load)
     
