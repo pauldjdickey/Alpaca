@@ -13,6 +13,7 @@ class EventItemsTableViewController: SwipeTableViewController {
     
     var eventItems: Results<Item>?
     let realm = try! Realm()
+
     
     var selectedEvent : Event? {
         didSet{
@@ -64,6 +65,7 @@ class EventItemsTableViewController: SwipeTableViewController {
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     
     //MARK: - Data Manipulaton (Load)
     func loadItems() {
