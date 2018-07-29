@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class EventItemsTableViewController: SwipeTableViewController {
+class EventItemsTableViewController: SwipeRemoveTableViewController {
     
     var eventItems: Results<Item>?
     let realm = try! Realm()
@@ -71,6 +71,22 @@ class EventItemsTableViewController: SwipeTableViewController {
     func loadItems() {
         eventItems = realm.objects(Item.self).filter("id = 'hello'")
         tableView.reloadData()
+    }
+    
+    //MARK: - Delete Data From Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let itemForDeletion = self.eventItems?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    itemForDeletion.added = false
+                    itemForDeletion.id = ""
+                }
+            } catch {
+                print("Error removing item from event, \(error)")
+            }
+        }
     }
     
 }

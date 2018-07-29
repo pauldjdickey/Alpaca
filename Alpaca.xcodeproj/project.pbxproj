@@ -21,6 +21,7 @@
 		5DBC24E82106DC06006AAE85 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC24E72106DC06006AAE85 /* EventTableViewController.swift */; };
 		5DBC24EA2106DC11006AAE85 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC24E92106DC11006AAE85 /* ListTableViewController.swift */; };
 		5DF47296210E5EAF00FD8F08 /* AllItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF47295210E5EAF00FD8F08 /* AllItemsTableViewController.swift */; };
+		5DF47298210E80F500FD8F08 /* SwipeRemoveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF47297210E80F500FD8F08 /* SwipeRemoveTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		5DBC24E72106DC06006AAE85 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		5DBC24E92106DC11006AAE85 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		5DF47295210E5EAF00FD8F08 /* AllItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllItemsTableViewController.swift; sourceTree = "<group>"; };
+		5DF47297210E80F500FD8F08 /* SwipeRemoveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRemoveTableViewController.swift; sourceTree = "<group>"; };
 		B03258CCDA21EF2DDF1F0919 /* Pods-Alpaca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alpaca.release.xcconfig"; path = "Pods/Target Support Files/Pods-Alpaca/Pods-Alpaca.release.xcconfig"; sourceTree = "<group>"; };
 		D57CC8F2B9F8A36B8AC7E1D1 /* Pods-Alpaca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alpaca.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Alpaca/Pods-Alpaca.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 			children = (
 				5D526E8F21055B2F00A28131 /* AppDelegate.swift */,
 				5D526E9121055B2F00A28131 /* SwipeTableViewController.swift */,
+				5DF47297210E80F500FD8F08 /* SwipeRemoveTableViewController.swift */,
 				5D24BEE7210BC1710061CDCB /* Supporting Files */,
 				5D24BEE6210BC15E0061CDCB /* Views */,
 				5D24BEEA210BC7280061CDCB /* Event Controllers */,
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D526E9221055B2F00A28131 /* SwipeTableViewController.swift in Sources */,
+				5DF47298210E80F500FD8F08 /* SwipeRemoveTableViewController.swift in Sources */,
 				5D79FE36210D1EF100A72030 /* Event.swift in Sources */,
 				5D79FE34210D1E8F00A72030 /* EventItemsTableViewController.swift in Sources */,
 				5DBC24E82106DC06006AAE85 /* EventTableViewController.swift in Sources */,
