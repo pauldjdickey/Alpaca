@@ -16,15 +16,20 @@ class EventItemsTableViewController: SwipeTableViewController {
     
     var selectedEvent : Event? {
         didSet{
-            // loadItems()
+            loadItems()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadItems()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        loadItems()
     }
     override func viewWillAppear(_ animated: Bool) {
         title = selectedEvent?.name
+        loadItems()
     }
     
     //MARK: - Tableview Datasource Methods (What to load into cells)
@@ -58,6 +63,12 @@ class EventItemsTableViewController: SwipeTableViewController {
         }
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    //MARK: - Data Manipulaton (Load)
+    func loadItems() {
+        eventItems = realm.objects(Item.self).filter("id = 'hello'")
+        tableView.reloadData()
     }
     
 }

@@ -139,7 +139,7 @@
             </objects>
             <point key="canvasLocation" x="2593" y="475"/>
         </scene>
-        <!--All Items-->
+        <!--Add Event Items-->
         <scene sceneID="D7y-i2-Xvl">
             <objects>
                 <tableViewController id="UCI-n8-DW3" customClass="AllItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
@@ -162,7 +162,7 @@
                             <outlet property="delegate" destination="UCI-n8-DW3" id="ebQ-GN-SlO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="All Items" id="Icn-C3-MKn"/>
+                    <navigationItem key="navigationItem" title="Add Event Items" id="Icn-C3-MKn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SM-du-EGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
