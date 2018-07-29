@@ -43,11 +43,16 @@ class AllItemsTableViewController: SwipeTableViewController {
 
     //MARK: - TableView Delegate Methods (What happens when a cell is selected)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         if let item = items?[indexPath.row] {
             do {
                 try realm.write {
-                    item.done = !item.done
+                    if item.id == "" {
+                        item.id = "hello"
+                        item.done = true
+                    } else {
+                        item.id = ""
+                        item.done = false
+                    }
                 }
             } catch {
                 print("Error saving the done status \(error)")

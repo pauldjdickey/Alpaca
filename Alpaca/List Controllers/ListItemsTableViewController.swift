@@ -79,6 +79,7 @@ class ListItemsTableViewController: SwipeTableViewController {
                         let newItem = Item()
                         newItem.title = textField.text!
                         newItem.dateCreated = Date()
+                        newItem.id = ""
                         currentList.items.append(newItem)
                     }
                 } catch {
