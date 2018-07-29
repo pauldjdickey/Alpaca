@@ -128,7 +128,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Event Items" id="GIC-hm-Xzl">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Ga-L1-B5U">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="7Ga-L1-B5U">
                             <connections>
                                 <segue destination="UCI-n8-DW3" kind="show" identifier="goToAllItems" id="gwo-QE-EZ3"/>
                             </connections>

@@ -36,7 +36,12 @@ class AllItemsTableViewController: SwipeTableViewController {
 
         if let item = items?[indexPath.row] {
             cell.textLabel?.text = item.title
-            cell.accessoryType = item.done ? .checkmark : .none
+            cell.accessoryType = item.added ? .checkmark : .none
+            if item.added == true {
+                cell.backgroundColor = UIColor.green
+            } else {
+                cell.backgroundColor = UIColor.clear
+            }
         }
         return cell
     }
@@ -48,10 +53,10 @@ class AllItemsTableViewController: SwipeTableViewController {
                 try realm.write {
                     if item.id == "" {
                         item.id = "hello"
-                        item.done = true
+                        item.added = true
                     } else {
                         item.id = ""
-                        item.done = false
+                        item.added = false
                     }
                 }
             } catch {
