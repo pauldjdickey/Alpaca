@@ -12,6 +12,8 @@ import RealmSwift
 class Event: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var eventID = UUID().uuidString
+    let eventItems = RealmSwift.List<Item>()
+
 
     
     override class func primaryKey() -> String? {
