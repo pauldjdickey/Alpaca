@@ -71,10 +71,10 @@ class ListTableViewController: SwipeTableViewController {
     //MARK: - Delete Data From Swipe
     
     override func updateModel(at indexPath: IndexPath) {
-        
-        if let listForDeletion = self.lists?[indexPath.row] {
+        if let listForDeletion = self.lists?[indexPath.row], let listDelete = self.lists?[indexPath.row].items {
             do {
                 try self.realm.write {
+                    self.realm.delete(listDelete)
                     self.realm.delete(listForDeletion)
                 }
             } catch {
