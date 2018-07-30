@@ -12,15 +12,15 @@ import RealmSwift
 class EventItemsTableViewController: SwipeRemoveTableViewController {
     
     var eventItems: Results<Item>?
+    var userSelected: Results<UserSelectedEvent>?
     let realm = try! Realm()
 
-    
     var selectedEvent : Event? {
         didSet{
-            loadItems()
+            loadItems()            
         }
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         loadItems()
@@ -69,7 +69,7 @@ class EventItemsTableViewController: SwipeRemoveTableViewController {
     
     //MARK: - Data Manipulaton (Load)
     func loadItems() {
-        eventItems = realm.objects(Item.self).filter("id = 'hello'")
+        eventItems = realm.objects(Item.self).filter("id = '\(selectedEvent!.eventID)'")
         tableView.reloadData()
     }
     

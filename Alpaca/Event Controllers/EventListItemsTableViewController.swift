@@ -14,13 +14,14 @@ class EventListItemsTableViewController: SwipeTableViewController {
     var listItems: Results<Item>?
     let realm = try! Realm()
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     var selectedList : List? {
         didSet{
             loadItems()
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,16 +52,14 @@ class EventListItemsTableViewController: SwipeTableViewController {
         }
         return cell
     }
-    
-    
-    
     //MARK: - TableView Delegate Methods (What happens when a cell is selected)
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let userSelection = realm.objects(UserSelectedEvent.self).first
             if let item = listItems?[indexPath.row] {
                 do {
                     try realm.write {
                         if item.id == "" {
-                            item.id = "hello"
+                            item.id = "\(userSelection!.name)"
                             item.added = true
                         } else {
                             item.id = ""

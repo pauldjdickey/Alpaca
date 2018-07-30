@@ -18,6 +18,7 @@
 		5D526E9A21055B3000A28131 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D526E9821055B3000A28131 /* LaunchScreen.storyboard */; };
 		5D79FE34210D1E8F00A72030 /* EventItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D79FE33210D1E8F00A72030 /* EventItemsTableViewController.swift */; };
 		5D79FE36210D1EF100A72030 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D79FE35210D1EF100A72030 /* Event.swift */; };
+		5D7DBA6D210EBDB40067EA05 /* UserSelectedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DBA6C210EBDB40067EA05 /* UserSelectedEvent.swift */; };
 		5DBC24E82106DC06006AAE85 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC24E72106DC06006AAE85 /* EventTableViewController.swift */; };
 		5DBC24EA2106DC11006AAE85 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC24E92106DC11006AAE85 /* ListTableViewController.swift */; };
 		5DF47296210E5EAF00FD8F08 /* EventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF47295210E5EAF00FD8F08 /* EventListTableViewController.swift */; };
@@ -40,6 +41,7 @@
 		5D526E9B21055B3000A28131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D79FE33210D1E8F00A72030 /* EventItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventItemsTableViewController.swift; sourceTree = "<group>"; };
 		5D79FE35210D1EF100A72030 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		5D7DBA6C210EBDB40067EA05 /* UserSelectedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSelectedEvent.swift; path = Alpaca/Data/UserSelectedEvent.swift; sourceTree = SOURCE_ROOT; };
 		5DBC24E72106DC06006AAE85 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		5DBC24E92106DC11006AAE85 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		5DF47295210E5EAF00FD8F08 /* EventListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		5D24BEE4210BC1590061CDCB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5D7DBA6C210EBDB40067EA05 /* UserSelectedEvent.swift */,
 				5D0169BB210BC92300620EFE /* List.swift */,
 				5D79FE35210D1EF100A72030 /* Event.swift */,
 				5D0169BD210BC92F00620EFE /* Item.swift */,
@@ -285,6 +288,7 @@
 				5D79FE34210D1E8F00A72030 /* EventItemsTableViewController.swift in Sources */,
 				5DBC24E82106DC06006AAE85 /* EventTableViewController.swift in Sources */,
 				5D526E9021055B2F00A28131 /* AppDelegate.swift in Sources */,
+				5D7DBA6D210EBDB40067EA05 /* UserSelectedEvent.swift in Sources */,
 				5DBC24EA2106DC11006AAE85 /* ListTableViewController.swift in Sources */,
 				5DF47296210E5EAF00FD8F08 /* EventListTableViewController.swift in Sources */,
 				5D0169BE210BC92F00620EFE /* Item.swift in Sources */,

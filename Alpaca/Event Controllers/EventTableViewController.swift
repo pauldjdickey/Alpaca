@@ -20,6 +20,13 @@ class EventTableViewController: SwipeTableViewController {
         loadEvents()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let allSelections = realm.objects(UserSelectedEvent.self)
+        try! realm.write {
+            realm.delete(allSelections)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         loadEvents()
     }
@@ -48,7 +55,13 @@ class EventTableViewController: SwipeTableViewController {
         
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedEvent = events?[indexPath.row]
+            
+            let newSelect = UserSelectedEvent()
+            newSelect.name = destinationVC.selectedEvent!.eventID
+            save(userSelect: newSelect)
+            
         }
+        
     }
     
     //MARK: - Data Manipulation Methods (Save and Load)
@@ -62,6 +75,16 @@ class EventTableViewController: SwipeTableViewController {
             print("Error saving event \(error)")
         }
         tableView.reloadData()
+    }
+    
+    func save(userSelect: UserSelectedEvent) {
+        do {
+            try realm.write {
+                realm.add(userSelect)
+            }
+        } catch {
+            print("Error saving userSelect \(error)")
+        }
     }
     
     func loadEvents () {
