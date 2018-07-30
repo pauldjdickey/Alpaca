@@ -130,7 +130,7 @@
                     <navigationItem key="navigationItem" title="Event Items" id="GIC-hm-Xzl">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="7Ga-L1-B5U">
                             <connections>
-                                <segue destination="UCI-n8-DW3" kind="show" identifier="goToAllItems" id="gwo-QE-EZ3"/>
+                                <segue destination="T8l-8Q-NjS" kind="presentation" id="BNA-Y0-kpU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="2593" y="475"/>
         </scene>
-        <!--Add Event Items-->
+        <!--All Lists-->
         <scene sceneID="D7y-i2-Xvl">
             <objects>
-                <tableViewController id="UCI-n8-DW3" customClass="AllItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="UCI-n8-DW3" customClass="EventListTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dAY-5M-uz0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,11 +162,55 @@
                             <outlet property="delegate" destination="UCI-n8-DW3" id="ebQ-GN-SlO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Event Items" id="Icn-C3-MKn"/>
+                    <navigationItem key="navigationItem" title="All Lists" id="Icn-C3-MKn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ulk-U8-igf">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="UCI-n8-DW3" id="ffo-e6-xPE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="GQd-8I-xlX" kind="show" identifier="goToEventListItems" id="vDd-9e-1Ve"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SM-du-EGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3415" y="475"/>
+            <point key="canvasLocation" x="4360.8000000000002" y="474.51274362818594"/>
+        </scene>
+        <!--Add Event Items-->
+        <scene sceneID="3IX-OX-hxF">
+            <objects>
+                <tableViewController id="GQd-8I-xlX" customClass="EventListItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GsI-jn-scQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="9lt-7K-enh" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9lt-7K-enh" id="EJJ-Oh-Owq">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GQd-8I-xlX" id="ej8-nj-jC0"/>
+                            <outlet property="delegate" destination="GQd-8I-xlX" id="GMx-6z-vfn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Event Items" id="hdl-au-9AC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="CQy-9Q-g5L">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="GQd-8I-xlX" id="LoS-fx-u7B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HBW-gP-sgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5124" y="474.51274362818594"/>
         </scene>
         <!--Items-->
         <scene sceneID="bzq-QT-cAa">
@@ -255,6 +299,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIe-nm-gAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="864.79999999999995" y="475.41229385307349"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="T6t-2O-SJ3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T8l-8Q-NjS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q4g-8G-ieL">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UCI-n8-DW3" kind="relationship" relationship="rootViewController" id="L7f-cd-m9s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1O-IX-tpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3421.5999999999999" y="474.51274362818594"/>
         </scene>
     </scenes>
 </document>
