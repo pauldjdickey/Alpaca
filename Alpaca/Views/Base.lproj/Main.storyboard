@@ -128,7 +128,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Event Items" id="GIC-hm-Xzl">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="7Ga-L1-B5U">
+                        <barButtonItem key="rightBarButtonItem" title="Add Tasks" id="7Ga-L1-B5U">
                             <connections>
                                 <segue destination="T8l-8Q-NjS" kind="presentation" id="BNA-Y0-kpU"/>
                             </connections>
