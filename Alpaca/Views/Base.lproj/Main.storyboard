@@ -59,7 +59,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="7tO-iw-9W8" kind="show" identifier="goToItems" id="AUS-Rm-iUp"/>
+                        <segue destination="7tO-iw-9W8" kind="show" identifier="goToTasks" id="AUS-Rm-iUp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ag0-Ug-BMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -97,17 +97,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="ElZ-xE-Fvy" kind="show" identifier="goToEventItems" id="2lL-VT-Wku"/>
+                        <segue destination="ElZ-xE-Fvy" kind="show" identifier="goToEventTasks" id="2lL-VT-Wku"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkI-Vv-rAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804" y="475.41229385307349"/>
         </scene>
-        <!--Event Items-->
+        <!--Event Tasks-->
         <scene sceneID="VT5-VU-Uwe">
             <objects>
-                <tableViewController id="ElZ-xE-Fvy" customClass="EventItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ElZ-xE-Fvy" customClass="EventTasksTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XDh-nj-QKl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,7 +127,7 @@
                             <outlet property="delegate" destination="ElZ-xE-Fvy" id="yHU-aG-8zz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Event Items" id="GIC-hm-Xzl">
+                    <navigationItem key="navigationItem" title="Event Tasks" id="GIC-hm-Xzl">
                         <barButtonItem key="rightBarButtonItem" title="Add Tasks" id="7Ga-L1-B5U">
                             <connections>
                                 <segue destination="T8l-8Q-NjS" kind="presentation" id="BNA-Y0-kpU"/>
@@ -170,7 +170,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="GQd-8I-xlX" kind="show" identifier="goToEventListItems" id="vDd-9e-1Ve"/>
+                        <segue destination="GQd-8I-xlX" kind="show" identifier="goToEventListTasks" id="vDd-9e-1Ve"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SM-du-EGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -180,7 +180,7 @@
         <!--Add Event Items-->
         <scene sceneID="3IX-OX-hxF">
             <objects>
-                <tableViewController id="GQd-8I-xlX" customClass="EventListItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GQd-8I-xlX" customClass="EventListTasksTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GsI-jn-scQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -215,7 +215,7 @@
         <!--Items-->
         <scene sceneID="bzq-QT-cAa">
             <objects>
-                <tableViewController id="7tO-iw-9W8" customClass="ListItemsTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7tO-iw-9W8" customClass="ListTasksTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z8u-FX-KHR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

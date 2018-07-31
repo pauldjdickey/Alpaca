@@ -36,7 +36,7 @@
 //
 //        if let item = items?[indexPath.row] {
 //            cell.textLabel?.text = item.title
-//            cell.accessoryType = item.added ? .checkmark : .none
+//            cell.accessoryType = item.addedToEvent ? .checkmark : .none
 //            if item.added == true {
 //                cell.backgroundColor = UIColor.green
 //            } else {

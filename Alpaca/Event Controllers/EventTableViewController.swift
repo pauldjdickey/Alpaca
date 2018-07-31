@@ -21,9 +21,9 @@ class EventTableViewController: SwipeTableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let allSelections = realm.objects(UserSelectedEvent.self)
+        let userEventSelection = realm.objects(UserSelectedEvent.self)
         try! realm.write {
-            realm.delete(allSelections)
+            realm.delete(userEventSelection)
         }
     }
     
@@ -48,17 +48,17 @@ class EventTableViewController: SwipeTableViewController {
     
     //MARK: - TableView Delegate Methods (Code that says what happens when we select a cell)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToEventItems", sender: self)
+        performSegue(withIdentifier: "goToEventTasks", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! EventItemsTableViewController
+        let destinationVC = segue.destination as! EventTasksTableViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedEvent = events?[indexPath.row]
             
-            let newSelect = UserSelectedEvent()
-            newSelect.name = destinationVC.selectedEvent!.eventID
-            save(userSelect: newSelect)
+            let newEventSelection = UserSelectedEvent()
+            newEventSelection.name = destinationVC.selectedEvent!.eventID
+            save(userSelect: newEventSelection)
             
         }
         

@@ -40,10 +40,10 @@ class ListTableViewController: SwipeTableViewController {
 
     //MARK: - TableView Delegate Methods (Code that says what happens when we select a cell)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToItems", sender: self)
+        performSegue(withIdentifier: "goToTasks", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ListItemsTableViewController
+        let destinationVC = segue.destination as! ListTasksTableViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedList = lists?[indexPath.row]
@@ -71,7 +71,7 @@ class ListTableViewController: SwipeTableViewController {
     //MARK: - Delete Data From Swipe
     
     override func updateModel(at indexPath: IndexPath) {
-        if let listForDeletion = self.lists?[indexPath.row], let listDelete = self.lists?[indexPath.row].items {
+        if let listForDeletion = self.lists?[indexPath.row], let listDelete = self.lists?[indexPath.row].tasks {
             do {
                 try self.realm.write {
                     self.realm.delete(listDelete)

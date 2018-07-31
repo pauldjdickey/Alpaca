@@ -9,16 +9,16 @@
 import UIKit
 import RealmSwift
 
-class EventListItemsTableViewController: SwipeTableViewController {
+class EventListTasksTableViewController: SwipeTableViewController {
     
-    var listItems: Results<Item>?
+    var listTasks: Results<Task>?
     let realm = try! Realm()
     
     
     
     var selectedList : List? {
         didSet{
-            loadItems()
+            loadTasks()
         }
     }
     
@@ -27,7 +27,7 @@ class EventListItemsTableViewController: SwipeTableViewController {
         super.viewDidLoad()
     }
     override func viewDidAppear(_ animated: Bool) {
-        loadItems()
+        loadTasks()
     }
     override func viewWillAppear(_ animated: Bool) {
         title = selectedList?.name
@@ -36,15 +36,15 @@ class EventListItemsTableViewController: SwipeTableViewController {
     //MARK: - Tableview Datasource Methods (What to load into cells)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listItems?.count ?? 1
+        return listTasks?.count ?? 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        if let item = listItems?[indexPath.row] {
-            cell.textLabel?.text = item.title
-            cell.accessoryType = item.added ? .checkmark : .none
-            if item.added == true {
+        if let task = listTasks?[indexPath.row] {
+            cell.textLabel?.text = task.title
+            cell.accessoryType = task.addedToEvent ? .checkmark : .none
+            if task.addedToEvent == true {
                 cell.backgroundColor = UIColor.green
             } else {
                 cell.backgroundColor = UIColor.clear
@@ -55,15 +55,15 @@ class EventListItemsTableViewController: SwipeTableViewController {
     //MARK: - TableView Delegate Methods (What happens when a cell is selected)
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let userSelection = realm.objects(UserSelectedEvent.self).first
-            if let item = listItems?[indexPath.row] {
+            if let task = listTasks?[indexPath.row] {
                 do {
                     try realm.write {
-                        if item.id == "" {
-                            item.id = "\(userSelection!.name)"
-                            item.added = true
+                        if task.id == "" {
+                            task.id = "\(userSelection!.name)"
+                            task.addedToEvent = true
                         } else {
-                            item.id = ""
-                            item.added = false
+                            task.id = ""
+                            task.addedToEvent = false
                         }
                     }
                 } catch {
@@ -75,8 +75,8 @@ class EventListItemsTableViewController: SwipeTableViewController {
         }
     
     //MARK: - Data Manipulaton (Load)
-    func loadItems() {
-        listItems = selectedList?.items.sorted(byKeyPath: "title", ascending: true)
+    func loadTasks() {
+        listTasks = selectedList?.tasks.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
     }
     
@@ -84,10 +84,10 @@ class EventListItemsTableViewController: SwipeTableViewController {
     
     override func updateModel(at indexPath: IndexPath) {
         
-        if let itemForDeletion = self.listItems?[indexPath.row] {
+        if let taskForDeletion = self.listTasks?[indexPath.row] {
             do {
                 try self.realm.write {
-                    self.realm.delete(itemForDeletion)
+                    self.realm.delete(taskForDeletion)
                 }
             } catch {
                 print("Error deleting list, \(error)")

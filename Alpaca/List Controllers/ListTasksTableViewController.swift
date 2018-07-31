@@ -9,16 +9,16 @@
 import UIKit
 import RealmSwift
 
-class ListItemsTableViewController: SwipeTableViewController {
+class ListTasksTableViewController: SwipeTableViewController {
     
-    var listItems: Results<Item>?
+    var listTasks: Results<Task>?
     let realm = try! Realm()
     
     @IBOutlet weak var searchBar: UISearchBar!
     
     var selectedList : List? {
         didSet{
-            loadItems()
+            loadTasks()
         }
     }
 
@@ -26,7 +26,7 @@ class ListItemsTableViewController: SwipeTableViewController {
         super.viewDidLoad()
     }
     override func viewDidAppear(_ animated: Bool) {
-        loadItems()
+        loadTasks()
     }
     override func viewWillAppear(_ animated: Bool) {
         title = selectedList?.name
@@ -35,16 +35,16 @@ class ListItemsTableViewController: SwipeTableViewController {
     //MARK: - Tableview Datasource Methods (What to load into cells)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listItems?.count ?? 1
+        return listTasks?.count ?? 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        if let item = listItems?[indexPath.row] {
-            cell.textLabel?.text = item.title
-            cell.accessoryType = item.done ? .checkmark : .none
+        if let task = listTasks?[indexPath.row] {
+            cell.textLabel?.text = task.title
+            cell.accessoryType = task.done ? .checkmark : .none
         } else {
-            cell.textLabel?.text = "No items added"
+            cell.textLabel?.text = "No tasks added"
         }
         return cell
     }
@@ -53,10 +53,10 @@ class ListItemsTableViewController: SwipeTableViewController {
     //MARK: - TableView Delegate Methods (What happens when a cell is selected)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let item = listItems?[indexPath.row] {
+        if let task = listTasks?[indexPath.row] {
             do {
                 try realm.write {
-                    item.done = !item.done
+                    task.done = !task.done
                 }
             } catch {
                 print("Error saving the done status \(error)")
@@ -71,26 +71,26 @@ class ListItemsTableViewController: SwipeTableViewController {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+        let alert = UIAlertController(title: "Add new task", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add task", style: .default) { (action) in
             if let currentList = self.selectedList {
                 do {
                     try self.realm.write {
-                        let newItem = Item()
-                        newItem.title = textField.text!
-                        newItem.dateCreated = Date()
-                        newItem.id = ""
-                        currentList.items.append(newItem)
+                        let newTask = Task()
+                        newTask.title = textField.text!
+                        newTask.dateCreated = Date()
+                        newTask.id = ""
+                        currentList.tasks.append(newTask)
                     }
                 } catch {
-                    print("Could not save new item \(error)")
+                    print("Could not save new task \(error)")
                 }
             }
             self.tableView.reloadData()
         }
         
         alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Create new item"
+            alertTextField.placeholder = "Create new task"
             textField = alertTextField
         }
 
@@ -100,8 +100,8 @@ class ListItemsTableViewController: SwipeTableViewController {
     
     
     //MARK: - Data Manipulaton (Load)
-    func loadItems() {
-        listItems = selectedList?.items.sorted(byKeyPath: "title", ascending: true)
+    func loadTasks() {
+        listTasks = selectedList?.tasks.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
     }
     
@@ -109,10 +109,10 @@ class ListItemsTableViewController: SwipeTableViewController {
     
     override func updateModel(at indexPath: IndexPath) {
         
-        if let itemForDeletion = self.listItems?[indexPath.row] {
+        if let taskForDeletion = self.listTasks?[indexPath.row] {
             do {
                 try self.realm.write {
-                    self.realm.delete(itemForDeletion)
+                    self.realm.delete(taskForDeletion)
                 }
             } catch {
                 print("Error deleting list, \(error)")
@@ -122,11 +122,11 @@ class ListItemsTableViewController: SwipeTableViewController {
     
 }
 
-extension ListItemsTableViewController: UISearchBarDelegate {
+extension ListTasksTableViewController: UISearchBarDelegate {
     //MARK: - Search bar methods
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        listItems = listItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+        listTasks = listTasks?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
         tableView.reloadData()
     }
     
@@ -136,7 +136,7 @@ extension ListItemsTableViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
-        loadItems()
+        loadTasks()
         DispatchQueue.main.async {
             searchBar.resignFirstResponder()
         }

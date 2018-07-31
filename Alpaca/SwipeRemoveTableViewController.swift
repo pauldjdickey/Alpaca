@@ -52,7 +52,7 @@ class SwipeRemoveTableViewController: UITableViewController, SwipeTableViewCellD
     func updateModel(at indexPath: IndexPath) {
         // Update our data model.
         
-        print("Item deleted from superclass")
+        print("Item removed from superclass")
     }
     
     

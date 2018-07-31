@@ -40,10 +40,10 @@ class EventListTableViewController: SwipeTableViewController {
     
     //MARK: - TableView Delegate Methods (Code that says what happens when we select a cell)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToEventListItems", sender: self)
+        performSegue(withIdentifier: "goToEventListTasks", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! EventListItemsTableViewController
+        let destinationVC = segue.destination as! EventListTasksTableViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedList = lists?[indexPath.row]

@@ -11,5 +11,5 @@ import RealmSwift
 
 class List: Object {
     @objc dynamic var name: String = ""
-    let items = RealmSwift.List<Item>()
+    let tasks = RealmSwift.List<Task>()
 }
