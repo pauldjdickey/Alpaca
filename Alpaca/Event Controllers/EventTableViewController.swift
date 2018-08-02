@@ -13,11 +13,15 @@ class EventTableViewController: SwipeTableViewController {
     
     let realm = try! Realm()
     var events: Results<Event>?
-    
+
+    @IBOutlet weak var eventLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadEvents()
+        tableView.rowHeight = 100.00
+        tableView.separatorStyle = .none
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,9 +43,12 @@ class EventTableViewController: SwipeTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        
+        // Use tags to reference things in the prototype cell
+        let label = cell.viewWithTag(1) as! UILabel
+    
         if let event = events?[indexPath.row] {
             cell.textLabel?.text = event.name
+            label.text = event.name
         }
         return cell
     }

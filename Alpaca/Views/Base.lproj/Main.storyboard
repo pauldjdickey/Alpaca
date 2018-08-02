@@ -75,12 +75,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="paw-Jd-3oL" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="paw-Jd-3oL" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="paw-Jd-3oL" id="GDq-9Z-gB6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAf-uj-yUH">
+                                            <rect key="frame" x="25" y="10" width="325" height="79"/>
+                                            <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDc-Nj-AVF">
+                                            <rect key="frame" x="166" y="39" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eDc-Nj-AVF" firstAttribute="centerY" secondItem="GDq-9Z-gB6" secondAttribute="centerY" id="7uh-Ez-hHP"/>
+                                        <constraint firstItem="eAf-uj-yUH" firstAttribute="top" secondItem="GDq-9Z-gB6" secondAttribute="top" constant="10" id="BQk-Ue-FRy"/>
+                                        <constraint firstAttribute="bottom" secondItem="eAf-uj-yUH" secondAttribute="bottom" constant="10" id="ZwY-Kf-141"/>
+                                        <constraint firstItem="eDc-Nj-AVF" firstAttribute="centerX" secondItem="GDq-9Z-gB6" secondAttribute="centerX" id="avb-O7-5NS"/>
+                                        <constraint firstAttribute="trailing" secondItem="eAf-uj-yUH" secondAttribute="trailing" constant="25" id="dF2-lu-yc1"/>
+                                        <constraint firstItem="eAf-uj-yUH" firstAttribute="leading" secondItem="GDq-9Z-gB6" secondAttribute="leading" constant="25" id="qsx-C9-fXi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
