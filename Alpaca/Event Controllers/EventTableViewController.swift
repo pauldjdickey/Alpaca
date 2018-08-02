@@ -44,11 +44,12 @@ class EventTableViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         // Use tags to reference things in the prototype cell
-        let label = cell.viewWithTag(1) as! UILabel
+        let labelEvent = cell.viewWithTag(1) as! UILabel
+        let labelTime = cell.viewWithTag(2) as! UILabel
     
         if let event = events?[indexPath.row] {
-            cell.textLabel?.text = event.time
-            label.text = event.name
+            labelTime.text = event.time
+            labelEvent.text = event.name
         }
         return cell
     }
