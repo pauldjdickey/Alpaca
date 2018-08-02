@@ -47,7 +47,7 @@ class EventTableViewController: SwipeTableViewController {
         let label = cell.viewWithTag(1) as! UILabel
     
         if let event = events?[indexPath.row] {
-            cell.textLabel?.text = event.name
+            cell.textLabel?.text = event.time
             label.text = event.name
         }
         return cell
@@ -95,7 +95,7 @@ class EventTableViewController: SwipeTableViewController {
     }
     
     func loadEvents () {
-        events = realm.objects(Event.self)
+        events = realm.objects(Event.self).sorted(byKeyPath: "time", ascending: true)
         tableView.reloadData()
     }
     
@@ -118,6 +118,7 @@ class EventTableViewController: SwipeTableViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
+        var dateField = UITextField()
         
         let alert = UIAlertController(title: "Add New Event", message: "", preferredStyle: .alert)
         
@@ -125,6 +126,7 @@ class EventTableViewController: SwipeTableViewController {
             
             let newEvent = Event()
             newEvent.name = textField.text!
+            newEvent.time = dateField.text!
             self.save(event: newEvent)
         }
         
@@ -132,7 +134,11 @@ class EventTableViewController: SwipeTableViewController {
         
         alert.addTextField { (field) in
             textField = field
-            textField.placeholder = "Add a new event"
+            textField.placeholder = "Add a new event name"
+        }
+        alert.addTextField { (field) in
+            dateField = field
+            dateField.placeholder = "Add a date"
         }
         present(alert, animated: true, completion: nil)
         
