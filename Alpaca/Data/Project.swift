@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class List: Object {
+class Project: Object {
     @objc dynamic var name: String = ""
     let tasks = RealmSwift.List<Task>()
 }

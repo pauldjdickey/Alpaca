@@ -13,7 +13,7 @@ class Event: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var time: String = ""
     @objc dynamic var eventID = UUID().uuidString
-    let eventItems = RealmSwift.List<Task>()
+    let eventTasks = RealmSwift.List<Task>()
 
 
     

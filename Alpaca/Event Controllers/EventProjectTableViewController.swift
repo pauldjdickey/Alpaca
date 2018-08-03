@@ -9,62 +9,62 @@
 import UIKit
 import RealmSwift
 
-class EventListTableViewController: SwipeTableViewController {
+class EventProjectTableViewController: SwipeTableViewController {
 
     let realm = try! Realm()
-    var lists: Results<List>?
+    var projects: Results<Project>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadLists()
+        loadProjects()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     override func viewDidAppear(_ animated: Bool) {
-        loadLists()
+        loadProjects()
     }
     
     //MARK: - TableView Datasource Methods (Code that tells each cell what to load)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lists?.count ?? 1
+        return projects?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        if let list = lists?[indexPath.row] {
-            cell.textLabel?.text = list.name
+        if let project = projects?[indexPath.row] {
+            cell.textLabel?.text = project.name
         }
         return cell
     }
     
     //MARK: - TableView Delegate Methods (Code that says what happens when we select a cell)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToEventListTasks", sender: self)
+        performSegue(withIdentifier: "goToEventProjectTasks", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! EventListTasksTableViewController
+        let destinationVC = segue.destination as! EventProjectTasksTableViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedList = lists?[indexPath.row]
+            destinationVC.selectedProject = projects?[indexPath.row]
         }
     }
     
     //MARK: - Data Manipulation Methods (Save and Load)
     
-    func save(list: List) {
+    func save(project: Project) {
         do {
             try realm.write {
-                realm.add(list)
+                realm.add(project)
             }
         } catch {
-            print("Error saving list \(error)")
+            print("Error saving Project \(error)")
         }
         tableView.reloadData()
     }
     
-    func loadLists () {
-        lists = realm.objects(List.self)
+    func loadProjects () {
+        projects = realm.objects(Project.self)
         tableView.reloadData()
     }
     
@@ -72,13 +72,13 @@ class EventListTableViewController: SwipeTableViewController {
     
     override func updateModel(at indexPath: IndexPath) {
         
-        if let listForDeletion = self.lists?[indexPath.row] {
+        if let projectForDeletion = self.projects?[indexPath.row] {
             do {
                 try self.realm.write {
-                    self.realm.delete(listForDeletion)
+                    self.realm.delete(projectForDeletion)
                 }
             } catch {
-                print("Error deleting list, \(error)")
+                print("Error deleting project, \(error)")
             }
         }
     }

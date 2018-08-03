@@ -15,7 +15,7 @@ class Task: Object {
     @objc dynamic var addedToEvent: Bool = false
     @objc dynamic var dateCreated: Date?
     @objc dynamic var id: String = ""
-    var parentCategory = LinkingObjects(fromType: List.self, property: "tasks")
+    var parentCategory = LinkingObjects(fromType: Project.self, property: "tasks")
     // var eventParentCategory = LinkingObjects(fromType: Event.self, property: "eventItems")
 
 }

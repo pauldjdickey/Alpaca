@@ -9,14 +9,14 @@
 import UIKit
 import RealmSwift
 
-class ListTasksTableViewController: SwipeTableViewController {
+class ProjectTasksTableViewController: SwipeTableViewController {
     
-    var listTasks: Results<Task>?
+    var projectTasks: Results<Task>?
     let realm = try! Realm()
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var selectedList : List? {
+    var selectedProject : Project? {
         didSet{
             loadTasks()
         }
@@ -29,18 +29,18 @@ class ListTasksTableViewController: SwipeTableViewController {
         loadTasks()
     }
     override func viewWillAppear(_ animated: Bool) {
-        title = selectedList?.name
+        title = selectedProject?.name
     }
     
     //MARK: - Tableview Datasource Methods (What to load into cells)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listTasks?.count ?? 1
+        return projectTasks?.count ?? 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        if let task = listTasks?[indexPath.row] {
+        if let task = projectTasks?[indexPath.row] {
             cell.textLabel?.text = task.title
             cell.accessoryType = task.done ? .checkmark : .none
         } else {
@@ -53,7 +53,7 @@ class ListTasksTableViewController: SwipeTableViewController {
     //MARK: - TableView Delegate Methods (What happens when a cell is selected)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let task = listTasks?[indexPath.row] {
+        if let task = projectTasks?[indexPath.row] {
             do {
                 try realm.write {
                     task.done = !task.done
@@ -73,14 +73,14 @@ class ListTasksTableViewController: SwipeTableViewController {
         
         let alert = UIAlertController(title: "Add new task", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add task", style: .default) { (action) in
-            if let currentList = self.selectedList {
+            if let currentProject = self.selectedProject {
                 do {
                     try self.realm.write {
                         let newTask = Task()
                         newTask.title = textField.text!
                         newTask.dateCreated = Date()
                         newTask.id = ""
-                        currentList.tasks.append(newTask)
+                        currentProject.tasks.append(newTask)
                     }
                 } catch {
                     print("Could not save new task \(error)")
@@ -101,7 +101,7 @@ class ListTasksTableViewController: SwipeTableViewController {
     
     //MARK: - Data Manipulaton (Load)
     func loadTasks() {
-        listTasks = selectedList?.tasks.sorted(byKeyPath: "title", ascending: true)
+        projectTasks = selectedProject?.tasks.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
     }
     
@@ -109,24 +109,24 @@ class ListTasksTableViewController: SwipeTableViewController {
     
     override func updateModel(at indexPath: IndexPath) {
         
-        if let taskForDeletion = self.listTasks?[indexPath.row] {
+        if let taskForDeletion = self.projectTasks?[indexPath.row] {
             do {
                 try self.realm.write {
                     self.realm.delete(taskForDeletion)
                 }
             } catch {
-                print("Error deleting list, \(error)")
+                print("Error deleting project, \(error)")
             }
         }
     }
     
 }
 
-extension ListTasksTableViewController: UISearchBarDelegate {
+extension ProjectTasksTableViewController: UISearchBarDelegate {
     //MARK: - Search bar methods
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        listTasks = listTasks?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+        projectTasks = projectTasks?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
         tableView.reloadData()
     }
     

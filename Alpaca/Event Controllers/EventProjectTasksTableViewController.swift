@@ -1,5 +1,5 @@
 //
-//  EventListItemsTableViewController.swift
+//  EventProjectItemsTableViewController.swift
 //  Alpaca
 //
 //  Created by Paul Dickey2 on 7/29/18.
@@ -9,14 +9,14 @@
 import UIKit
 import RealmSwift
 
-class EventListTasksTableViewController: SwipeTableViewController {
+class EventProjectTasksTableViewController: SwipeTableViewController {
     
-    var listTasks: Results<Task>?
+    var projectTasks: Results<Task>?
     let realm = try! Realm()
     
     
     
-    var selectedList : List? {
+    var selectedProject : Project? {
         didSet{
             loadTasks()
         }
@@ -30,18 +30,18 @@ class EventListTasksTableViewController: SwipeTableViewController {
         loadTasks()
     }
     override func viewWillAppear(_ animated: Bool) {
-        title = selectedList?.name
+        title = selectedProject?.name
     }
     
     //MARK: - Tableview Datasource Methods (What to load into cells)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listTasks?.count ?? 1
+        return projectTasks?.count ?? 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        if let task = listTasks?[indexPath.row] {
+        if let task = projectTasks?[indexPath.row] {
             cell.textLabel?.text = task.title
             cell.accessoryType = task.addedToEvent ? .checkmark : .none
             if task.addedToEvent == true {
@@ -55,7 +55,7 @@ class EventListTasksTableViewController: SwipeTableViewController {
     //MARK: - TableView Delegate Methods (What happens when a cell is selected)
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let userSelection = realm.objects(UserSelectedEvent.self).first
-            if let task = listTasks?[indexPath.row] {
+            if let task = projectTasks?[indexPath.row] {
                 do {
                     try realm.write {
                         if task.id == "" {
@@ -76,7 +76,7 @@ class EventListTasksTableViewController: SwipeTableViewController {
     
     //MARK: - Data Manipulaton (Load)
     func loadTasks() {
-        listTasks = selectedList?.tasks.sorted(byKeyPath: "title", ascending: true)
+        projectTasks = selectedProject?.tasks.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
     }
     
@@ -84,13 +84,13 @@ class EventListTasksTableViewController: SwipeTableViewController {
     
     override func updateModel(at indexPath: IndexPath) {
         
-        if let taskForDeletion = self.listTasks?[indexPath.row] {
+        if let taskForDeletion = self.projectTasks?[indexPath.row] {
             do {
                 try self.realm.write {
                     self.realm.delete(taskForDeletion)
                 }
             } catch {
-                print("Error deleting list, \(error)")
+                print("Error deleting project, \(error)")
             }
         }
     }

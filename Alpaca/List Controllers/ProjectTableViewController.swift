@@ -1,5 +1,6 @@
 //
-//  ListTableViewController.swift
+//  Project
+// TableViewController.swift
 //  Alpaca
 //
 //  Created by Paul Dickey2 on 7/23/18.
@@ -9,31 +10,31 @@
 import UIKit
 import RealmSwift
 
-class ListTableViewController: SwipeTableViewController {
+class ProjectTableViewController: SwipeTableViewController {
     
     let realm = try! Realm()
-    var lists: Results<List>?
+    var projects: Results<Project>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadLists()
+        loadProjects()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     override func viewDidAppear(_ animated: Bool) {
-        loadLists()
+        loadProjects()
     }
     
     //MARK: - TableView Datasource Methods (Code that tells each cell what to load)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lists?.count ?? 1
+        return projects?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        if let list = lists?[indexPath.row] {
-            cell.textLabel?.text = list.name
+        if let project = projects?[indexPath.row] {
+            cell.textLabel?.text = project.name
         }
         return cell
     }
@@ -43,42 +44,42 @@ class ListTableViewController: SwipeTableViewController {
         performSegue(withIdentifier: "goToTasks", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ListTasksTableViewController
+        let destinationVC = segue.destination as! ProjectTasksTableViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedList = lists?[indexPath.row]
+            destinationVC.selectedProject = projects?[indexPath.row]
         }
     }
 
     //MARK: - Data Manipulation Methods (Save and Load)
 
-    func save(list: List) {
+    func save(project: Project) {
         do {
             try realm.write {
-                realm.add(list)
+                realm.add(project)
             }
         } catch {
-            print("Error saving list \(error)")
+            print("Error saving project \(error)")
         }
         tableView.reloadData()
     }
     
-    func loadLists () {
-        lists = realm.objects(List.self)
+    func loadProjects () {
+        projects = realm.objects(Project.self)
         tableView.reloadData()
     }
     
     //MARK: - Delete Data From Swipe
     
     override func updateModel(at indexPath: IndexPath) {
-        if let listForDeletion = self.lists?[indexPath.row], let listDelete = self.lists?[indexPath.row].tasks {
+        if let projectForDeletion = self.projects?[indexPath.row], let projectDelete = self.projects?[indexPath.row].tasks {
             do {
                 try self.realm.write {
-                    self.realm.delete(listDelete)
-                    self.realm.delete(listForDeletion)
+                    self.realm.delete(projectDelete)
+                    self.realm.delete(projectForDeletion)
                 }
             } catch {
-                print("Error deleting list, \(error)")
+                print("Error deleting project, \(error)")
             }
         }
     }
@@ -88,13 +89,13 @@ class ListTableViewController: SwipeTableViewController {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add New List", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Project", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
-            let newList = List()
-            newList.name = textField.text!
-            self.save(list: newList)
+            let newProject = Project()
+            newProject.name = textField.text!
+            self.save(project: newProject)
             
         }
         
@@ -102,7 +103,7 @@ class ListTableViewController: SwipeTableViewController {
         
         alert.addTextField { (field) in
             textField = field
-            textField.placeholder = "Add a new list"
+            textField.placeholder = "Add a new project"
         }
         
         present(alert, animated: true, completion: nil)

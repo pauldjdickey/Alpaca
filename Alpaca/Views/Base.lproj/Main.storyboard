@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
-        <!--Lists-->
+        <!--Projects-->
         <scene sceneID="feo-cX-jDS">
             <objects>
-                <tableViewController id="u85-3x-h6X" customClass="ListTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="u85-3x-h6X" customClass="ProjectTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nRG-hb-dsN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
                             <outlet property="delegate" destination="u85-3x-h6X" id="kUD-Gd-b7X"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Lists" id="DL9-dG-Z7v">
+                    <navigationItem key="navigationItem" title="Projects" id="DL9-dG-Z7v">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4tc-t8-2LB">
                             <connections>
                                 <action selector="addButtonPressed:" destination="u85-3x-h6X" id="WRW-HL-TRn"/>
@@ -185,10 +185,10 @@
             </objects>
             <point key="canvasLocation" x="2593" y="475"/>
         </scene>
-        <!--All Lists-->
+        <!--All Projects-->
         <scene sceneID="D7y-i2-Xvl">
             <objects>
-                <tableViewController id="UCI-n8-DW3" customClass="EventListTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="UCI-n8-DW3" customClass="EventProjectTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dAY-5M-uz0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,7 +208,7 @@
                             <outlet property="delegate" destination="UCI-n8-DW3" id="ebQ-GN-SlO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="All Lists" id="Icn-C3-MKn">
+                    <navigationItem key="navigationItem" title="All Projects" id="Icn-C3-MKn">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ulk-U8-igf">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="UCI-n8-DW3" id="ffo-e6-xPE"/>
@@ -216,17 +216,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="GQd-8I-xlX" kind="show" identifier="goToEventListTasks" id="vDd-9e-1Ve"/>
+                        <segue destination="GQd-8I-xlX" kind="show" identifier="goToEventProjectTasks" id="vDd-9e-1Ve"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2SM-du-EGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4360.8000000000002" y="474.51274362818594"/>
         </scene>
-        <!--Add Event Items-->
+        <!--Add Event Tasks-->
         <scene sceneID="3IX-OX-hxF">
             <objects>
-                <tableViewController id="GQd-8I-xlX" customClass="EventListTasksTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GQd-8I-xlX" customClass="EventProjectTasksTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GsI-jn-scQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,7 +246,7 @@
                             <outlet property="delegate" destination="GQd-8I-xlX" id="GMx-6z-vfn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Event Items" id="hdl-au-9AC">
+                    <navigationItem key="navigationItem" title="Add Event Tasks" id="hdl-au-9AC">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="CQy-9Q-g5L">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="GQd-8I-xlX" id="LoS-fx-u7B"/>
@@ -261,7 +261,7 @@
         <!--Items-->
         <scene sceneID="bzq-QT-cAa">
             <objects>
-                <tableViewController id="7tO-iw-9W8" customClass="ListTasksTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7tO-iw-9W8" customClass="ProjectTasksTableViewController" customModule="Alpaca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z8u-FX-KHR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
