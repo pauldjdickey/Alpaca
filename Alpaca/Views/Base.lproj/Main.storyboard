@@ -308,11 +308,11 @@
             </objects>
             <point key="canvasLocation" x="2678" y="-495"/>
         </scene>
-        <!--Lists-->
+        <!--Projects-->
         <scene sceneID="lzE-RM-0j5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="isH-nb-ogm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lists" id="57w-bc-5zU"/>
+                    <tabBarItem key="tabBarItem" title="Projects" id="57w-bc-5zU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="oxH-vH-ON8">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
